@@ -1,0 +1,91 @@
+/* Magpie — the Gilded Aviary. System fonts only, no webfonts, no network. */
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #0b0716;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: #e8e2ff;
+}
+#game-wrap { position: fixed; inset: 0; }
+#game { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
+#status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+#hud {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  display: none;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: linear-gradient(rgba(10, 6, 24, 0.92), rgba(10, 6, 24, 0.75));
+  border-bottom: 1px solid rgba(201, 162, 39, 0.55);
+  font-size: 14px;
+  z-index: 5;
+}
+.hud-group { display: flex; align-items: baseline; gap: 6px; white-space: nowrap; }
+.hud-gallery { font-family: Georgia, serif; font-weight: bold; font-size: 17px; color: #ffe98a; }
+#hud-screen { font-size: 11px; color: #9a92bd; font-family: system-ui, sans-serif; }
+.hud-label { font-size: 10px; letter-spacing: 0.12em; color: #9a92bd; }
+#hud-score, #hud-shine, #hud-time, #hud-hint { font-weight: bold; color: #fff; }
+#hud-shine { color: #ffd94d; }
+.hud-alarm { flex: 1; min-width: 180px; }
+.alarm-track {
+  flex: 1;
+  height: 12px;
+  background: #241a3e;
+  border: 1px solid #4a3f6b;
+  border-radius: 6px;
+  overflow: hidden;
+}
+#hud-alarm-fill { height: 100%; width: 0%; background: #3f9e4d; transition: width 0.2s; }
+#hud-alarm-fill.warm { background: #d4a017; }
+#hud-alarm-fill.hot { background: #d43a2a; }
+#hud-alarm-fill.lockdown { background: repeating-linear-gradient(45deg, #ff2a1a 0 8px, #7a0f08 8px 16px); }
+#hud-alarm-value { font-weight: bold; min-width: 34px; }
+#hud-alarm-label { font-size: 11px; font-weight: bold; color: #ffd94d; letter-spacing: 0.08em; }
+.hud-tools { display: flex; gap: 6px; }
+.tool-chip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 7px;
+  border: 1px solid #4a3f6b;
+  border-radius: 12px;
+  background: rgba(36, 26, 62, 0.8);
+  font-size: 11px;
+  opacity: 0.55;
+}
+.tool-chip.affordable { opacity: 1; border-color: #c9a227; }
+.tool-chip.owned { opacity: 1; border-color: #3f9e4d; background: rgba(30, 70, 40, 0.8); }
+.tool-chip.cooling { opacity: 0.4; }
+.tool-key {
+  display: inline-block;
+  min-width: 14px;
+  text-align: center;
+  background: #c9a227;
+  color: #14101f;
+  font-weight: bold;
+  border-radius: 3px;
+  padding: 0 2px;
+}
+.tool-name { color: #e8e2ff; }
+.tool-cost { color: #ffd94d; font-weight: bold; }
+
+#hud-message {
+  position: absolute;
+  left: 50%;
+  bottom: 26px;
+  transform: translateX(-50%);
+  display: none;
+  padding: 8px 18px;
+  background: rgba(10, 6, 24, 0.88);
+  border: 1px solid #c9a227;
+  border-radius: 18px;
+  color: #ffe98a;
+  font-size: 15px;
+  font-weight: bold;
+  z-index: 5;
+  white-space: nowrap;
+}
+#hud-message.show { display: block; }
